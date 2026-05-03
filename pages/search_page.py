@@ -7,7 +7,7 @@ from utils import capture_screenshot
 class AmazonSearchPage:
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, 15)
+        self.wait = WebDriverWait(self.driver, 25)
 
         # Locators
         self.search_textbox = (By.ID, "twotabsearchtextbox")
