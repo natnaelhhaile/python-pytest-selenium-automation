@@ -1,4 +1,4 @@
-# Amazon Web Automation Framework -- Python | Pytest | Selenium
+# Amazon Web Automation Framework - Python | Pytest | Selenium
 
 A professional-grade web automation framework built with **Python**, **Pytest**, and **Selenium**. This project implements an industry-standard **Page Object Model (POM)** to automate complex e-commerce workflows, including product searching, variant selection, and cart management.
 
@@ -29,6 +29,7 @@ A professional-grade web automation framework built with **Python**, **Pytest**,
 ├── conftest.py         # Global fixtures and driver configuration
 ├── pytest.ini          # Test runner configuration and discovery rules
 └── requirements.txt    # Project dependencies
+```
 
 ## 🧪 Running the Tests
 
