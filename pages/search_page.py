@@ -18,13 +18,16 @@ class AmazonSearchPage:
 
     def search_for_item(self, item_name):
         # Check if we are stuck on the bot challenge page
-        if "button below to continue" in self.driver.page_source:
+        if "button below to continue" in self.driver.page_source.lower():
             try:
                 # Look for that specific 'Continue shopping' button
-                continue_btn = self.driver.find_element(By.PARTIAL_LINK_TEXT, "Continue")
+                # Use a more flexible XPath and a short wait
+                wait = WebDriverWait(self.driver, 5)
+                continue_btn = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[contains(text(), 'Continue')]")))
                 continue_btn.click()
+                print("Attempted to bypass bot challenge.")
             except:
-                print("Couldn't bypass captcha/bot challenge!")
+                print("Bot challenge detected but 'Continue' button was not interactable.")
         search_field = self.wait.until(EC.element_to_be_clickable(self.search_textbox))
         search_field.clear()
         search_field.send_keys(item_name)
