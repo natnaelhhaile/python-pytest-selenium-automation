@@ -1,4 +1,4 @@
-selenium
-pytest
-pandas
-openpyxl
+openpyxl==3.1.5
+pandas==2.1.4
+pytest==9.0.3
+selenium==4.43.0
