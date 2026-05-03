@@ -15,10 +15,13 @@ def driver(request):
     # Check if '--headless' flag was passed in the trmnl
     if request.config.getoption("--headless"):
         chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--window-size=1920,1080")
         chrome_options.add_argument("--disable-gpu")
         # Adding a common user-agent as it helps avoid bot detection in headless mode
-        chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36")
+        chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
     # your driver
     driver = webdriver.Chrome(options=chrome_options)
     # print(f"\nUsing driver at: {driver.service.path}")
