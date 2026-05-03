@@ -69,4 +69,6 @@ A modular, enterprise-grade test automation framework built with **Python**, **P
     allure serve allure-results
 ```
 
-### Developed by [Natnael Haile](https://github.com/natnaelhhaile)
+## Developed by 
+
+[Natnael Haile](https://github.com/natnaelhhaile)
