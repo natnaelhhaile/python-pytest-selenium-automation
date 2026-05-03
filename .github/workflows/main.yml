@@ -3,6 +3,11 @@ name: Selenium CI Pipeline
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.gitignore'
+      - 'docs/**'  # Useful if there is a documentation folder
 
 permissions:
   contents: write
