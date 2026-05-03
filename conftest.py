@@ -1,4 +1,5 @@
 import os
+import allure
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -39,13 +40,22 @@ def pytest_runtest_makereport(item, call):
     report = outcome.get_result()
 
     if report.when == "call" and report.failed:
-        # Check if driver fixture is being used 
-        if "driver" in item.funcargs:
-            driver = item.funcargs["driver"]
-            if not os.path.exists("screenshots"):
-                os.makedirs("screenshots")
+        # # Check if driver fixture is being used 
+        # if "driver" in item.funcargs:
+        #     driver = item.funcargs["driver"]
+        #     if not os.path.exists("screenshots"):
+        #         os.makedirs("screenshots")
 
-            # Save screenshots with the name of the failed test function
-            screenshot_path = f"screenshots/FAIL_{item.name}.png"
-            driver.save_screenshot(screenshot_path)
-            print(f"\n[FAILURE] Screenshot captured: {screenshot_path}")
+        #     # Save screenshots with the name of the failed test function
+        #     screenshot_path = f"screenshots/FAIL_{item.name}.png"
+        #     driver.save_screenshot(screenshot_path)
+        #     print(f"\n[FAILURE] Screenshot captured: {screenshot_path}")
+
+        mode = 'a' if os.path.exists('failures') else 'w'
+        try:
+            # Put the image in the allure report
+            allure.attach(item.instance.driver.get_screenshot_as_png(),
+                          name="screenshot",
+                          attachment_type=allure.attachment_type.PNG)
+        except Exception as e:
+            print(f"Failed to take screenshot: {e}")
